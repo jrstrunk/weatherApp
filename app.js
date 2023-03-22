@@ -15,23 +15,13 @@ searchForm.addEventListener('submit', function(event) {
     event.preventDefault();
     mainContent.classList.remove("Hide");
     let city = cityInput.value;
-    console.log(city);
     let state = stateInput.value;
-    console.log(state);
 
     fetch(`https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/weatherdata/forecast?locations=${city},${state}&iconSet=icons1&aggregateHours=24&forecastDays=5&unitGroup=us&shortColumnNames=false&contentType=json&key=95VXDF2FPLW35MCG9BJ7VZ6WC`, {
   method: 'GET', 
   headers: { },
 }).then((response) => response.json())
 .then((data) => {
-    console.log(data)
-    //let str = JSON.parse(data);
-    //console.log(data.locations[Object.keys(data.locations)].id);
-    //console.log(data.locations[Object.keys(data.locations)].currentConditions);
-    //console.log(data.locations[Object.keys(data.locations)].currentConditions.datetime);
-    //console.log(data.locations[Object.keys(data.locations)].currentConditions.temp);
-    //console.log(data.locations[Object.keys(data.locations)].currentConditions.temp);
-
     let city = cityInput.value;
     let selectedCity = document.querySelector("#selectedCity");
     let actualTemp = document.querySelector("#actualTemp");
@@ -63,7 +53,6 @@ searchForm.addEventListener('submit', function(event) {
     for(let i =0; i< data.locations[Object.keys(data.locations)].values.length; i++){
         let high = (data.locations[Object.keys(data.locations)].values[i].maxt);
         highs[i].innerText = "High: " + high + "°F";
-        console.log("new high");
     }
 
     let lows = document.querySelectorAll(".low");
@@ -71,7 +60,6 @@ searchForm.addEventListener('submit', function(event) {
     for(let i =0; i< data.locations[Object.keys(data.locations)].values.length; i++){
         let low = (data.locations[Object.keys(data.locations)].values[i].mint);
         lows[i].innerText = "Low: " + low + "°F";
-        console.log("new low");
     }
 
     let feels = document.querySelectorAll(".feels");
@@ -116,228 +104,117 @@ searchForm.addEventListener('submit', function(event) {
 
     if(icon == "rain"){
         day1.src = "rain.png";
-        console.log("rain");
     } else if(icon == "wind"){
         day1.src = "wind.png";
-        console.log("wind");
     } else if(icon == "cloudy"){
         day1.src = "cloudy.png";
-        console.log("clouds");
     } else if(icon == "fog") {
         day1.src = "fog.png";
-        console.log("fog");
     } else if(icon == "snow"){
         day1.src = "snow.png";
-        console.log("snow");
     } else if(icon == "partly-cloudy-day"){
         day1.src = "partly-cloudy-day.png";
-        console.log("partly cloudy day");
     } else if(icon == "partly-cloudy-night"){
         day1.src = "partly-cloudy-night.png";
-        console.log("partly cloudly night");
     } else if(icon == "clear-day"){
         day1.src = "clear-day.png";
-        console.log("clear day");
     } else if(icon == "clear-night"){
         day1.src = "clear-night.png";
-        console.log("clear night");
     } else {
         day1.src = "clear-day.png";
-        console.log("default");
     }
     
     icon = (data.locations[Object.keys(data.locations)].values[1].icon);
     if(icon == "rain"){
         day2.src = "rain.png";
-        console.log("rain");
     } else if(icon == "wind"){
         day2.src = "wind.png";
-        console.log("wind");
     } else if(icon == "cloudy"){
         day2.src = "cloudy.png";
-        console.log("clouds");
     } else if(icon == "fog") {
         day2.src = "fog.png";
-        console.log("fog");
     } else if(icon == "snow"){
         day2.src = "snow.png";
-        console.log("snow");
     } else if(icon == "partly-cloudy-day"){
         day2.src = "partly-cloudy-day.png";
-        console.log("partly cloudy day");
     } else if(icon == "partly-cloudy-night"){
         day2.src = "partly-cloudy-night.png";
-        console.log("partly cloudly night");
     } else if(icon == "clear-day"){
         day2.src = "clear-day.png";
-        console.log("clear day");
     } else if(icon == "clear-night"){
         day2.src = "clear-night.png";
-        console.log("clear night");
     } else {
         day2.src = "clear-day.png";
-        console.log("default");
     }
 
     icon = (data.locations[Object.keys(data.locations)].values[2].icon);
     if(icon == "rain"){
         day3.src = "rain.png";
-        console.log("rain");
     } else if(icon == "wind"){
         day3.src = "wind.png";
-        console.log("wind");
     } else if(icon == "cloudy"){
         day3.src = "cloudy.png";
-        console.log("clouds");
     } else if(icon == "fog") {
         day3.src = "fog.png";
-        console.log("fog");
     } else if(icon == "snow"){
         day3.src = "snow.png";
-        console.log("snow");
     } else if(icon == "partly-cloudy-day"){
         day3.src = "partly-cloudy-day.png";
-        console.log("partly cloudy day");
     } else if(icon == "partly-cloudy-night"){
         day3.src = "partly-cloudy-night.png";
-        console.log("partly cloudly night");
     } else if(icon == "clear-day"){
         day3.src = "clear-day.png";
-        console.log("clear day");
     } else if(icon == "clear-night"){
         day3.src = "clear-night.png";
-        console.log("clear night");
     } else {
         day3.src = "clear-day.png";
-        console.log("default");
     }
 
     icon = (data.locations[Object.keys(data.locations)].values[3].icon);
     if(icon == "rain"){
         day4.src = "rain.png";
-        console.log("rain");
     } else if(icon == "wind"){
         day4.src = "wind.png";
-        console.log("wind");
     } else if(icon == "cloudy"){
         day4.src = "cloudy.png";
-        console.log("clouds");
     } else if(icon == "fog") {
         day4.src = "fog.png";
-        console.log("fog");
     } else if(icon == "snow"){
         day4.src = "snow.png";
-        console.log("snow");
     } else if(icon == "partly-cloudy-day"){
         day4.src = "partly-cloudy-day.png";
-        console.log("partly cloudy day");
     } else if(icon == "partly-cloudy-night"){
         day4.src = "partly-cloudy-night.png";
-        console.log("partly cloudly night");
     } else if(icon == "clear-day"){
         day4.src = "clear-day.png";
-        console.log("clear day");
     } else if(icon == "clear-night"){
         day4.src = "clear-night.png";
-        console.log("clear night");
     } else {
         day4.src = "clear-day.png";
-        console.log("default");
     }
 
     icon = (data.locations[Object.keys(data.locations)].values[4].icon);
     if(icon == "rain"){
         day5.src = "rain.png";
-        console.log("rain");
     } else if(icon == "wind"){
         day5.src = "wind.png";
-        console.log("wind");
     } else if(icon == "cloudy"){
         day5.src = "cloudy.png";
-        console.log("clouds");
     } else if(icon == "fog") {
         day5.src = "fog.png";
-        console.log("fog");
     } else if(icon == "snow"){
         day5.src = "snow.png";
-        console.log("snow");
     } else if(icon == "partly-cloudy-day"){
         day5.src = "partly-cloudy-day.png";
-        console.log("partly cloudy day");
     } else if(icon == "partly-cloudy-night"){
         day5.src = "partly-cloudy-night.png";
-        console.log("partly cloudly night");
     } else if(icon == "clear-day"){
         day5.src = "clear-day.png";
-        console.log("clear day");
     } else if(icon == "clear-night"){
         day5.src = "clear-night.png";
-        console.log("clear night");
     } else {
         day5.src = "clear-day.png";
-        console.log("default");
     }
-
-/*     for(let i = 0; i < data.locations[Object.keys(data.locations)].values.length; i++){
-        let icon = (data.locations[Object.keys(data.locations)].values[i].icon);
-        let test = icons[i];
-
-        console.log("FUC");
-        console.log(test)
-
-        if(icon == "rain"){
-            test.src = "file://C:\Users\joshs\Desktop\school\Projects\WeatherApp\rain.png";
-            icons[i].classList.add("resize");
-            console.log("rain");
-        } else if(icon == "wind"){
-            test.src = "wind.png";
-            icons[i].classList.add("resize");
-            console.log("wind");
-        } else if(icon == "cloudy"){
-            test.src = "cloudy.png";
-            icons[i].classList.add("resize");
-            console.log("clouds");
-        } else if(icon == "fog") {
-            test.src = "fog.png";
-            icons[i].classList.add("resize");
-            console.log("fog");
-        } else if(icon == "snow"){
-            icons[i].src = "snow.png";
-            icons[i].classList.add("resize");
-            console.log("snow");
-        } else if(icon == "partly-cloudy-day"){
-            icons[i].src = "/partly-cloudy-day.png";
-            icons[i].classList.add("resize");
-            console.log("partly cloudy day");
-        } else if(icon == "partly-cloudy-night"){
-            icons[i].src = "partly-cloudy-night.png";
-            icons[i].classList.add("resize");
-            console.log("partly cloudly night");
-        } else if(icon == "clear-day"){
-            icons[i].src = "clear-day.png";
-            icons[i].classList.add("resize");
-            console.log("clear day");
-        } else if(icon == "clear-night"){
-            icons[i].src = "clear-night.png";
-            icons[i].classList.add("resize");
-            console.log("clear night");
-        } else {
-            icons[i].src = "clear-day.png";
-            icons[i].classList.add("resize");
-            console.log("default");
-        }
-
-        console.log("these are tests");
-        console.log(icons[i].src);
-        console.log(icons[i]);
-        console.log(icon);
-        console.log(icons);
-
-
-        let icontitle = `${icon}.png`;
-        icons[i].src="";
-    } */
-
 });
 })
 
