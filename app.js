@@ -27,50 +27,52 @@ searchForm.addEventListener('submit', (event) => {
         let actualTemp = document.querySelector("#actualTemp");
         let currentlyFeels = document.querySelector("#currentlyFeels");
 
+        let location = data.locations[Object.keys(data.locations)[0]]
+
         selectedCity.innerText = city + "'s Current Weather";
-        actualTemp.innerText = "Temprature " + data.locations[Object.keys(data.locations)].currentConditions.temp + "°F";
-        let wind = data.locations[Object.keys(data.locations)].currentConditions.windchill;
+        actualTemp.innerText = "Temprature " + location.currentConditions.temp + "°F";
+        let wind = location.currentConditions.windchill;
 
         if(!wind === null){
             currentlyFeels.innerText = "Feels Like " + wind + "°F";
         } else{
-            currentlyFeels.innerText = "Feels Like " + data.locations[Object.keys(data.locations)].values[0].temp + "°F";
+            currentlyFeels.innerText = "Feels Like " + location.values[0].temp + "°F";
         }
 
         let weather = document.querySelector("#weather");
-        weather.innerText = data.locations[Object.keys(data.locations)].values[0].conditions;
+        weather.innerText = location.values[0].conditions;
 
         let dates = document.querySelectorAll(".date");
 
-        for(let i = 0; i < data.locations[Object.keys(data.locations)].values.length; i++){
-            let date = (data.locations[Object.keys(data.locations)].values[i].datetimeStr);
+        for(let i = 0; i < location.values.length; i++){
+            let date = (location.values[i].datetimeStr);
             let newDate = date.substring(0,10);
             dates[i].innerText = newDate;
         }
 
         let highs = document.querySelectorAll(".high");
 
-        for(let i =0; i< data.locations[Object.keys(data.locations)].values.length; i++){
-            let high = (data.locations[Object.keys(data.locations)].values[i].maxt);
+        for(let i =0; i< location.values.length; i++){
+            let high = (location.values[i].maxt);
             highs[i].innerText = "High: " + high + "°F";
         }
 
         let lows = document.querySelectorAll(".low");
 
-        for(let i =0; i< data.locations[Object.keys(data.locations)].values.length; i++){
-            let low = (data.locations[Object.keys(data.locations)].values[i].mint);
+        for(let i =0; i< location.values.length; i++){
+            let low = (location.values[i].mint);
             lows[i].innerText = "Low: " + low + "°F";
         }
 
         let feels = document.querySelectorAll(".feels");
 
-        for(let i = 0; i < data.locations[Object.keys(data.locations)].values.length; i++){
-            let feel = (data.locations[Object.keys(data.locations)].values[i].windchill);
+        for(let i = 0; i < location.values.length; i++){
+            let feel = (location.values[i].windchill);
             if(!feel === null){
                 feels[i].innerText = "Feels like: " + feel + "°F";
             }
             else{
-                let temp = (data.locations[Object.keys(data.locations)].values[i].temp);
+                let temp = (location.values[i].temp);
                 feels[i].innerText = "Feels like: " + temp + "°F";
             }
             
@@ -78,21 +80,21 @@ searchForm.addEventListener('submit', (event) => {
 
         let temps = document.querySelectorAll(".temp");
 
-        for(let i = 0; i < data.locations[Object.keys(data.locations)].values.length; i++){
-            let temp = (data.locations[Object.keys(data.locations)].values[i].temp);
-            let condition = (data.locations[Object.keys(data.locations)].values[i].conditions);
+        for(let i = 0; i < location.values.length; i++){
+            let temp = (location.values[i].temp);
+            let condition = (location.values[i].conditions);
             temps[i].innerText = condition + " and " + temp + "°F";
         }
 
         let days = document.querySelectorAll(".day");
 
-        for(let i = 0; i < data.locations[Object.keys(data.locations)].values.length; i++){
-            let day = (data.locations[Object.keys(data.locations)].values[i].datetimeStr);
+        for(let i = 0; i < location.values.length; i++){
+            let day = (location.values[i].datetimeStr);
             let newday = getDayName(day, "en-US");
             days[i].innerText = newday;
         }
 
-        let icon = (data.locations[Object.keys(data.locations)].values[0].icon);
+        let icon = (location.values[0].icon);
         let day1 = document.querySelector("#day1");
         let day2 = document.querySelector("#day2");
         let day3 = document.querySelector("#day3");
@@ -124,7 +126,8 @@ searchForm.addEventListener('submit', (event) => {
             day1.src = "clear-day.png";
         }
         
-        icon = (data.locations[Object.keys(data.locations)].values[1].icon);
+        
+        icon = (location.values[1].icon);
         if(icon == "rain"){
             day2.src = "rain.png";
         } else if(icon == "wind"){
@@ -147,7 +150,7 @@ searchForm.addEventListener('submit', (event) => {
             day2.src = "clear-day.png";
         }
 
-        icon = (data.locations[Object.keys(data.locations)].values[2].icon);
+        icon = (location.values[2].icon);
         if(icon == "rain"){
             day3.src = "rain.png";
         } else if(icon == "wind"){
@@ -170,7 +173,7 @@ searchForm.addEventListener('submit', (event) => {
             day3.src = "clear-day.png";
         }
 
-        icon = (data.locations[Object.keys(data.locations)].values[3].icon);
+        icon = (location.values[3].icon);
         if(icon == "rain"){
             day4.src = "rain.png";
         } else if(icon == "wind"){
@@ -193,7 +196,7 @@ searchForm.addEventListener('submit', (event) => {
             day4.src = "clear-day.png";
         }
 
-        icon = (data.locations[Object.keys(data.locations)].values[4].icon);
+        icon = (location.values[4].icon);
         if(icon == "rain"){
             day5.src = "rain.png";
         } else if(icon == "wind"){
