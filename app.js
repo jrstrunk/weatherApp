@@ -94,129 +94,17 @@ searchForm.addEventListener('submit', (event) => {
             days[i].innerText = newday;
         }
 
-        let icon = (location.values[0].icon);
-        let day1 = document.querySelector("#day1");
-        let day2 = document.querySelector("#day2");
-        let day3 = document.querySelector("#day3");
-        let day4 = document.querySelector("#day4");
-        let day5 = document.querySelector("#day5");
+        let validIconNames = ["rain", "wind", "fog", "snow", "partly-cloudy-day", "partly-cloudy-night", "clear-day", "clear-night"];
 
-        //I am aware this is not the best way to do this. Below it is the way I was 
-        //trying and plan to come back to it. I wanted to make everything work together before it was perfect
+        for (let i = 0; i < location.values.length; i++) {
+            let day = document.querySelector(`#day${i + 1}`);
+            let icon = location.values[i].icon;
 
-        if(icon == "rain"){
-            day1.src = "rain.png";
-        } else if(icon == "wind"){
-            day1.src = "wind.png";
-        } else if(icon == "cloudy"){
-            day1.src = "cloudy.png";
-        } else if(icon == "fog") {
-            day1.src = "fog.png";
-        } else if(icon == "snow"){
-            day1.src = "snow.png";
-        } else if(icon == "partly-cloudy-day"){
-            day1.src = "partly-cloudy-day.png";
-        } else if(icon == "partly-cloudy-night"){
-            day1.src = "partly-cloudy-night.png";
-        } else if(icon == "clear-day"){
-            day1.src = "clear-day.png";
-        } else if(icon == "clear-night"){
-            day1.src = "clear-night.png";
-        } else {
-            day1.src = "clear-day.png";
-        }
-        
-        
-        icon = (location.values[1].icon);
-        if(icon == "rain"){
-            day2.src = "rain.png";
-        } else if(icon == "wind"){
-            day2.src = "wind.png";
-        } else if(icon == "cloudy"){
-            day2.src = "cloudy.png";
-        } else if(icon == "fog") {
-            day2.src = "fog.png";
-        } else if(icon == "snow"){
-            day2.src = "snow.png";
-        } else if(icon == "partly-cloudy-day"){
-            day2.src = "partly-cloudy-day.png";
-        } else if(icon == "partly-cloudy-night"){
-            day2.src = "partly-cloudy-night.png";
-        } else if(icon == "clear-day"){
-            day2.src = "clear-day.png";
-        } else if(icon == "clear-night"){
-            day2.src = "clear-night.png";
-        } else {
-            day2.src = "clear-day.png";
-        }
-
-        icon = (location.values[2].icon);
-        if(icon == "rain"){
-            day3.src = "rain.png";
-        } else if(icon == "wind"){
-            day3.src = "wind.png";
-        } else if(icon == "cloudy"){
-            day3.src = "cloudy.png";
-        } else if(icon == "fog") {
-            day3.src = "fog.png";
-        } else if(icon == "snow"){
-            day3.src = "snow.png";
-        } else if(icon == "partly-cloudy-day"){
-            day3.src = "partly-cloudy-day.png";
-        } else if(icon == "partly-cloudy-night"){
-            day3.src = "partly-cloudy-night.png";
-        } else if(icon == "clear-day"){
-            day3.src = "clear-day.png";
-        } else if(icon == "clear-night"){
-            day3.src = "clear-night.png";
-        } else {
-            day3.src = "clear-day.png";
-        }
-
-        icon = (location.values[3].icon);
-        if(icon == "rain"){
-            day4.src = "rain.png";
-        } else if(icon == "wind"){
-            day4.src = "wind.png";
-        } else if(icon == "cloudy"){
-            day4.src = "cloudy.png";
-        } else if(icon == "fog") {
-            day4.src = "fog.png";
-        } else if(icon == "snow"){
-            day4.src = "snow.png";
-        } else if(icon == "partly-cloudy-day"){
-            day4.src = "partly-cloudy-day.png";
-        } else if(icon == "partly-cloudy-night"){
-            day4.src = "partly-cloudy-night.png";
-        } else if(icon == "clear-day"){
-            day4.src = "clear-day.png";
-        } else if(icon == "clear-night"){
-            day4.src = "clear-night.png";
-        } else {
-            day4.src = "clear-day.png";
-        }
-
-        icon = (location.values[4].icon);
-        if(icon == "rain"){
-            day5.src = "rain.png";
-        } else if(icon == "wind"){
-            day5.src = "wind.png";
-        } else if(icon == "cloudy"){
-            day5.src = "cloudy.png";
-        } else if(icon == "fog") {
-            day5.src = "fog.png";
-        } else if(icon == "snow"){
-            day5.src = "snow.png";
-        } else if(icon == "partly-cloudy-day"){
-            day5.src = "partly-cloudy-day.png";
-        } else if(icon == "partly-cloudy-night"){
-            day5.src = "partly-cloudy-night.png";
-        } else if(icon == "clear-day"){
-            day5.src = "clear-day.png";
-        } else if(icon == "clear-night"){
-            day5.src = "clear-night.png";
-        } else {
-            day5.src = "clear-day.png";
+            if (validIconNames.includes(icon)) {
+                day.src = `${icon}.png`;
+            } else {
+                day.src = "partly-cloudy-day.png";
+            }
         }
     }); 
 })
