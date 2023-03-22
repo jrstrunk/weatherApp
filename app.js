@@ -1,4 +1,4 @@
-let searchBTN = document.querySelector("#search");
+let searchForm = document.querySelector("#searchForm");
 let cityInput = document.querySelector("#cityInp");
 let stateInput = document.querySelector("#stateInp");
 let mainContent = document.querySelector("#main");
@@ -11,7 +11,8 @@ resetBTN.addEventListener('click', function(){
     stateInput.value = '';
 })
 
-searchBTN.addEventListener('click', function() {
+searchForm.addEventListener('submit', function(event) {
+    event.preventDefault();
     mainContent.classList.remove("Hide");
     let city = cityInput.value;
     console.log(city);
